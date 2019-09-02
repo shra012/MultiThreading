@@ -87,7 +87,5 @@ public class ParallelAdder {
 		int sSum= adder.sequentialSum();                       
 		System.out.println("parallel Sum equals to Sequential Sum ? " );
 		System.out.println("Answer is :: " + (pSum==sSum));      
-		
-		System.out.println(0xb);
 	}
 }
