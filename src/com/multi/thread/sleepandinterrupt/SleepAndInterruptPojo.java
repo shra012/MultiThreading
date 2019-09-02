@@ -1,4 +1,4 @@
-package com.multi.thread.sleepandwait;
+package com.multi.thread.sleepandinterrupt;
 
 import static java.lang.Thread.sleep;
 

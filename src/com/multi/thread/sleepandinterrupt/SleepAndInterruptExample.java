@@ -1,4 +1,4 @@
-package com.multi.thread.sleepandwait;
+package com.multi.thread.sleepandinterrupt;
 
 public class SleepAndInterruptExample {
 	public static void main(String[] args) {
