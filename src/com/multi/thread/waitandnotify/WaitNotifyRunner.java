@@ -10,7 +10,7 @@ public class WaitNotifyRunner {
 
 		void consume() {
 			synchronized (key) {
-				if (isEmpty()) {
+				while (isEmpty()) {
 					try {
 						key.wait();
 					} catch (InterruptedException e) {
@@ -31,7 +31,7 @@ public class WaitNotifyRunner {
 
 		void produce() {
 			synchronized (key) {
-				if (isFull()) {
+				while (isFull()) {
 					try {
 						key.wait();
 					} catch (InterruptedException e) {
@@ -46,6 +46,10 @@ public class WaitNotifyRunner {
 		public boolean isFull() {
 			return count == buffer.length;
 
+		}
+		
+		public boolean isEmpty() {
+			return count == 0;
 		}
 	}
 
@@ -68,7 +72,7 @@ public class WaitNotifyRunner {
 		Thread consumerWorker = new Thread(consume);
 		producerWorker.start();
 		consumerWorker.start();
-		consumerWorker.join();
+		//consumerWorker.join();
 		Runnable checker = () -> {
 			System.out.println("Lanched Delayed Consumer");
 			for (int i = 0; i < 200; i++)
@@ -76,7 +80,7 @@ public class WaitNotifyRunner {
 		};
 		Thread delayedConsumer = new Thread(checker);
 		delayedConsumer.start();
-		delayedConsumer.join();
+		producerWorker.join();
 		System.out.println("Data in Buffer " + count);
 	}
 
