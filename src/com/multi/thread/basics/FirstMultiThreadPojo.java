@@ -1,8 +1,7 @@
 package com.multi.thread.basics;
 
 public class FirstMultiThreadPojo {
-
-	private long value;
+	private volatile long value;
 	private Object key = new Object();
 
 	public FirstMultiThreadPojo(long value) {
